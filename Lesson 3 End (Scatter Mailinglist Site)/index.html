@@ -1,0 +1,106 @@
+<html>
+<head>
+    <!-- scatterjs-core scatterjs-plugin-eosjs2 eosjs-api eosjs-jsonrpc -->
+    <script src='assets/eosjs-api.js'></script>
+    <script src='assets/eosjs-jsonrpc.js'></script>
+    <script src='assets/scatterjs-core.min.js'></script>
+    <script src='assets/scatterjs-plugin-eosjs2.min.js'></script>
+</head>
+    <h2>Your username is:</h2>
+    <h1 id="status">Not Logged In</h1>
+<body>
+    <button style="font-size:200%" onclick="login()">Login</button>
+    <button style="font-size:200%" onclick="regusr()">Register</button>
+    <button style="font-size:200%" onclick="unregusr()">Unregister</button>
+    <button style="font-size:200%" onclick="logout()">Logout</button>
+
+    <script>
+    
+        // Everything that Scatter does on the page
+        // Set up ScatterJS.Network
+        ScatterJS.plugins( new ScatterEOS() );
+
+        const network = ScatterJS.Network.fromJson({
+            blockchain:'eos',
+            chainId:'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f',
+            host:'localhost',
+            port:'8888',
+            protocol: 'http'
+        })
+
+        // Run ScatterJS.Connect
+        ScatterJS.connect('MailingList',{network}).then(connected => {
+            if(!connected) return console.error('no scatter');
+            ScatterJS.login().then(id=> {
+                if(!id) return console.error('no identity');
+            });
+        });
+
+        // perpetually update that status id
+        const setStatus = () => {
+            const status = document.getElementById('status');
+            if(!ScatterJS) return status.innerText = 'No Scatter';
+            if(!ScatterJS.identity) return status.innerText = 'No Identity';
+            status.innerText = ScatterJS.identity.accounts[0].name;
+        };
+        setStatus();
+        setInterval(() => {
+            setStatus();
+        }, 50);
+        
+        window.logout = () => {
+            ScatterJS.logout();
+        }
+
+        window.login = () => {
+            ScatterJS.login();
+        }
+
+        window.regusr = () => {
+            transact('regusr');
+        }
+
+        window.unregusr = () => {
+            transact('unregusr');
+        }
+
+        window.transact = (actionname) => {
+            ScatterJS.login().then(id => {
+                if(!id) return console.error('no identity');
+                const account = ScatterJS.account('eos');
+
+                // set up our RPC + API
+                const rpc = new eosjs_jsonrpc.default(network.fullhost());
+                const api = ScatterJS.eos(network, eosjs_api.default, {rpc});
+
+                api.transact({
+                    actions:[{
+                        account: 'mailinglist4',
+                        name: actionname,
+                        authorization: // user paying for resources must go first
+                        [{
+                            actor: account.name,
+                            permission: account.authority,
+                        }],
+                        data: {
+                            //TODO: pass in data object
+                            username: account.name
+                        }
+                    }]
+                }, {
+                    blocksBehind: 3,
+                    expireSeconds: 30,
+                }).then(res => {
+                    console.log('sent tx: ', res);
+                }).catch(err => {
+                    console.error('error thrown: ', err);
+                });
+            });
+        }
+
+    
+    </script>
+
+</body>
+
+</html>

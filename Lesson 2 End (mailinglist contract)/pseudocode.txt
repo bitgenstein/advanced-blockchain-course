@@ -1,0 +1,19 @@
+Mailing List
+
+Register (regusr)
+  if (user is already registered) 
+     error "you've already registered"
+  else
+     register the user (add them to the table)
+
+Unregister (unregusr)
+  if (user is not registered) 
+     error "you're not registered"
+  else
+     unregister the user (add them to the table)
+
+
+TABLE mailinglist {
+    name username;
+    auto primary_key() const { return username.value }
+}

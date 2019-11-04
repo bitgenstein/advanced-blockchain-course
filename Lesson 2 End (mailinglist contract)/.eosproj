@@ -1,0 +1,21 @@
+{
+  "main": "src/mailinglist4.cpp",
+  "contract": "mailinglist4",
+  "include": "",
+  "resource": "",
+  "cdt": "cmd",
+  "output": "",
+  "scripts": {
+    "build": ""
+  },
+  "deploy": {
+    "target": "both",
+    "mainnet": "",
+    "kylin": "",
+    "jungle": "",
+    "local": ""
+  },
+  "test": {
+    "npmClient": ""
+  }
+}
