@@ -1,0 +1,385 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "endgame",
+            "base": "",
+            "fields": [
+                {
+                    "name": "payload",
+                    "type": "player_struct"
+                }
+            ]
+        },
+        {
+            "name": "game",
+            "base": "",
+            "fields": [
+                {
+                    "name": "life_player",
+                    "type": "int8"
+                },
+                {
+                    "name": "life_ai",
+                    "type": "int8"
+                },
+                {
+                    "name": "deck_player",
+                    "type": "uint8[]"
+                },
+                {
+                    "name": "deck_ai",
+                    "type": "uint8[]"
+                },
+                {
+                    "name": "hand_player",
+                    "type": "uint8[]"
+                },
+                {
+                    "name": "hand_ai",
+                    "type": "uint8[]"
+                },
+                {
+                    "name": "selected_card_player",
+                    "type": "uint8"
+                },
+                {
+                    "name": "selected_card_ai",
+                    "type": "uint8"
+                },
+                {
+                    "name": "life_lost_player",
+                    "type": "uint8"
+                },
+                {
+                    "name": "life_lost_ai",
+                    "type": "uint8"
+                },
+                {
+                    "name": "status",
+                    "type": "int8"
+                }
+            ]
+        },
+        {
+            "name": "ipfsentry",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "login",
+            "base": "",
+            "fields": [
+                {
+                    "name": "payload",
+                    "type": "player_struct"
+                }
+            ]
+        },
+        {
+            "name": "nextround",
+            "base": "",
+            "fields": [
+                {
+                    "name": "payload",
+                    "type": "player_struct"
+                }
+            ]
+        },
+        {
+            "name": "play_struct",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "player_card_idx",
+                    "type": "uint8"
+                }
+            ]
+        },
+        {
+            "name": "playcard",
+            "base": "",
+            "fields": [
+                {
+                    "name": "payload",
+                    "type": "play_struct"
+                }
+            ]
+        },
+        {
+            "name": "player_struct",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "seed",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "uint64"
+                },
+                {
+                    "name": "value",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "shardbucket",
+            "base": "",
+            "fields": [
+                {
+                    "name": "shard_uri",
+                    "type": "bytes"
+                },
+                {
+                    "name": "shard",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "startgame",
+            "base": "",
+            "fields": [
+                {
+                    "name": "payload",
+                    "type": "player_struct"
+                }
+            ]
+        },
+        {
+            "name": "user_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "win_count",
+                    "type": "uint16"
+                },
+                {
+                    "name": "lost_count",
+                    "type": "uint16"
+                },
+                {
+                    "name": "game_data",
+                    "type": "game"
+                }
+            ]
+        },
+        {
+            "name": "xcleanup",
+            "base": "",
+            "fields": [
+                {
+                    "name": "current_provider",
+                    "type": "name"
+                },
+                {
+                    "name": "package",
+                    "type": "name"
+                },
+                {
+                    "name": "size",
+                    "type": "uint32"
+                },
+                {
+                    "name": "uri",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "xcommit",
+            "base": "",
+            "fields": [
+                {
+                    "name": "current_provider",
+                    "type": "name"
+                },
+                {
+                    "name": "package",
+                    "type": "name"
+                },
+                {
+                    "name": "size",
+                    "type": "uint32"
+                },
+                {
+                    "name": "uri",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "xdcommit",
+            "base": "",
+            "fields": [
+                {
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "xsignal",
+            "base": "",
+            "fields": [
+                {
+                    "name": "service",
+                    "type": "name"
+                },
+                {
+                    "name": "action",
+                    "type": "name"
+                },
+                {
+                    "name": "provider",
+                    "type": "name"
+                },
+                {
+                    "name": "package",
+                    "type": "name"
+                },
+                {
+                    "name": "signalRawData",
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "xwarmup",
+            "base": "",
+            "fields": [
+                {
+                    "name": "current_provider",
+                    "type": "name"
+                },
+                {
+                    "name": "package",
+                    "type": "name"
+                },
+                {
+                    "name": "size",
+                    "type": "uint32"
+                },
+                {
+                    "name": "uri",
+                    "type": "string"
+                },
+                {
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "endgame",
+            "type": "endgame",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "login",
+            "type": "login",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "nextround",
+            "type": "nextround",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "playcard",
+            "type": "playcard",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "startgame",
+            "type": "startgame",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "xcleanup",
+            "type": "xcleanup",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "xcommit",
+            "type": "xcommit",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "xdcommit",
+            "type": "xdcommit",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "xsignal",
+            "type": "xsignal",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "xwarmup",
+            "type": "xwarmup",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": ".users",
+            "type": "user_info",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "ipfsentry",
+            "type": "ipfsentry",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "seed",
+            "type": "seed",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "users",
+            "type": "shardbucket",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
